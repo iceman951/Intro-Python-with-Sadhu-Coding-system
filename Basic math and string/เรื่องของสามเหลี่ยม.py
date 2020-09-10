@@ -1,0 +1,11 @@
+import math
+print("******************************\n********About Triangle********\n******************************")
+a = float(input("Enter a-side long (cm): "))
+b = float(input("Enter b-side long (cm): "))
+c = math.sqrt((a**2)+(b**2)-(2*a*b*math.cos(math.radians(90))))
+angle_a = math.degrees(math.asin(a/c))
+angle_b = math.degrees(math.asin(b/c))
+print("A angle is {:.4f}".format(angle_a))
+print("B angle is {:.4f}".format(angle_b))
+print("c-side is {:.4f} cm".format(c))
+print("******************************")
