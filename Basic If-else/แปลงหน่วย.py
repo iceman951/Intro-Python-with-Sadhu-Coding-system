@@ -1,13 +1,21 @@
-import re
+text = str(input("Enter value in mm, cm, and m: "))
+goal_unit = input('Enter unit to convert in mm, cm, m: ').strip()
 
-def unit_converter(val, unit_in, unit_out):
-    unit = {'mm':0.001, 'cm':0.01, 'm':1.0}
-    return val*unit[unit_in]/unit[unit_out]
+SI = 0.0
+value = ''
 
-value = str(input("Enter value in mm, cm, and m: "))
-goal_unit = str(input("Enter unit to convert in mm, cm, m: "))
-value_unit = ''.join(c for c in value if c.isalpha())
-digit_value = re.findall(r"[-+]?\d*\.\d+|\d+", value)
-result_number = unit_converter(float(digit_value[0]), value_unit, goal_unit)
-txt =  "Value after unit conversion is {:.1f}" + goal_unit
-print(txt.format(result_number))
+if text.find('mm') != -1:
+    SI = float(text.split('mm')[0])/1000.0
+elif text.find('cm') != -1:
+    SI = float(text.split('cm')[0])/100.0
+elif text.find('m') != -1:
+    SI = float(text.split('m')[0])/1.0
+
+if goal_unit == 'mm':
+    value = str(SI*1000) + 'mm'
+elif goal_unit == 'cm':
+    value = str(SI*100) + 'cm'
+elif goal_unit == 'm':
+    value = str(SI) + 'm'
+
+print('Value after unit conversion is',value)
